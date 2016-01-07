@@ -3,13 +3,20 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>アンケート入力</title>
-<h1>アンケート入力</h1>
+<title>アンケート入力ページ</title>
+<h1>アンケート入力ページ</h1>
 </head>
 <body>
+<?php
+    if(!isset($_SESSION["count"])){
+        $_SESSION["count"] = 0;
+    } else {
+        $_SESSION["count"]++;
+    }
+?>
 <form action="confirm_enq.php" method="get">
     名前：<input type="text" name="name"></input><br>
-    Eメール：<input type="text" name="mailAdress"></input><br>
+    Eメール：<input type="text" name="mailAddress"></input><br>
     年齢：<input type="text" name="age"></input><br>
     性別：<input type="radio" name="gender" value="男">男</input>
     <input type="radio" name="gender" value="女">女</input>
@@ -25,7 +32,7 @@
     <input type="checkbox" name="hobby9" value="ネットサーフィン">ネットサーフィン</input><br>
     <input type="checkbox" name="hobby10" value="仕事">仕事</input>
     <input type="checkbox" name="hobby11" value="その他">その他</input><br>
-<input type="submit" action="confirm_enq.php" method="post"></input>
+<input type="submit"></input>
 </form>
 </body>
 </html>
