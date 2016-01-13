@@ -96,10 +96,10 @@ answer_confirmationに遷移。
     <input type='checkbox' name='future3' value='特になし'>特になし　
     <input type='checkbox' name='future4' value='秘密・その他'>秘密・その他
     <p></p>
-    新年会希望日　： <input type='checkbox' name='drinking' value='1/23'>1/23(土)　
-    <input type='checkbox' name='drinking' value='1/30'>1/30(土)　
-    <input type='checkbox' name='drinking' value='2/6'>2/6(土)　
-    <input type='checkbox' name='drinking' value='2/13'>2/13(土)
+    新年会希望日　： <input type='checkbox' name='drinkingDay1' value='1/23'>1/23(土)　
+    <input type='checkbox' name='drinkingDay2' value='1/30'>1/30(土)　
+    <input type='checkbox' name='drinkingDay3' value='2/6'>2/6(土)　
+    <input type='checkbox' name='drinkingDay4' value='2/13'>2/13(土)
     <p></p>
     <span>　　　　　　　　</span>
     <input type='submit'></input>
