@@ -15,13 +15,13 @@
     $_SESSION['name']= $_GET['name'];
     //複数選択用の数値。
     $interest = 'interest';
-    $_SESSION['interest'] = array();
+    $_SESSION[$interest] = array();
     $language = 'language';
-    $_SESSION['language'] = array();
+    $_SESSION[$language] = array();
     $future = 'future';
-    $_SESSION['future'] = array();
+    $_SESSION[$future] = array();
     $drinkingDay = 'drinkingDay';
-    $_SESSION['drinkingDay'] = array();
+    $_SESSION[$drinkingDay] = array();
 ?>
 <!--入力フォームのデータの出力。エラーチェックのために下記の関数を使用しました。-->
 名前　　　　　：<?php echoWithValidation($_SESSION['name']); ?>
@@ -58,10 +58,9 @@
                 echo '<br>';
                 echo '<span>　　　　　　　　</span>';
                 //csvへの出力のために配列にする。
-                $_SESSION['$array']= $_GET[$arrayNum];
+                $_SESSION[$array][]= $_GET[$arrayNum];
             }
         }        
-        var_dump($_SESSION['$array']);
     }
     
     //きちんとフォームに値が記入されているかを確認する関数。

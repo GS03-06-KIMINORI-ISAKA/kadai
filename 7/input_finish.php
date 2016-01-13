@@ -14,8 +14,7 @@
     session_start();
     $pdo = new PDO('mysql:dbname=gs_db;host=localhost','root','');
     $stmt = $pdo->query('SET NAMES utf8');
-    var_dump($_SESSION['interest']);
-    
+
     $interestForDB = serialize($_SESSION['interest']);
     $languageForDB = serialize($_SESSION['language']);
     $futureForDB = serialize($_SESSION['future']);
