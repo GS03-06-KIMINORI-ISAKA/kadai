@@ -1,39 +1,23 @@
 
-<!--
-回答している場合はアンケート入力thanks＋アンケート回答確認indexを表示。ページにつなぐかは要考察。
-回答していない場合はアンケートを表示。名前はfacebook認証のデータを基に自動で埋め込み。
-answer_confirmationに遷移。
--->
-
 
 <!DOCTYPE html>
 <html lang="ja">
 <head>
 <meta charset='utf-8'>
-<title>アンケート入力ページ</title>
-<h1>アンケート入力ページ</h1>
+<title>興味入力ページ</title>
+    <h1>興味入力ページ</h1>
+    <!--回答後は回答確認ページ（answer_confirmation.php）へ移動。-->
 </head>
 <body>
 <form action='answer_confirmation.php' method='get'>
-    名前　　　　　：<input type='text' name='name'></input>
+<!--質問が多すぎるので趣味などは省略。質問事項は以下の５つ。
+１．名前
+２．興味のある対象
+３．興味のある言語
+４．今後の進路
+５．飲み会希望日-->
+    名前　　　　　：<input type='text' name='name'>
     <p></p>
-<!--質問が多すぎるので省略。
-    趣味　　　　：<input type='checkbox' name='hobby1' value='野球'>
-    <input type='checkbox' name='hobby2' value='サッカー'>
-    <input type='checkbox' name='hobby3' value='バスケットボール'>
-    <input type='checkbox' name='hobby4' value='テニス'>
-    <input type='checkbox' name='hobby5' value='その他スポーツ'>
-    <input type='checkbox' name='hobby6' value='旅行・アウトドア'>
-見映えをよくするためにspanを入れる
-    <span>　　　　</span>
-    <input type='checkbox' name='hobby7' value='音楽'>
-    <input type='checkbox' name='hobby8' value='映画'>
-    <input type='checkbox' name='hobby9' value='美術'>
-    <input type='checkbox' name='hobby10' value='その他芸術'>
-    <input type='checkbox' name='hobby11' value='ネットサーフィン'><br>
-    <span>　　　　</span>
-    <input type='checkbox' name='hobby12' value='その他'><br>
--->
     興味のある対象
     <br>
     　　・ヒト　　：
@@ -68,6 +52,7 @@ answer_confirmationに遷移。
     <span>　　　　　　　　</span>
     <input type='checkbox' name='interest22' value='娯楽その他'>その他
     <p></p>
+    
     興味のある言語<br>
     　　・フロント： <input type='checkbox' name='language1' value='HTML, CSS'>HTML, CSS
     <input type='checkbox' name='language2' value='JavaScript(フロント側)'>JavaScript
@@ -88,21 +73,23 @@ answer_confirmationに遷移。
     　　・スマホ　：
     <input type='checkbox' name='language12' value='Java'>Java　　　
     <input type='checkbox' name='language13' value='Swift'>Swift　　　
-    <input type='checkbox' name='language14' value='Swift'>JavaScript　
+    <input type='checkbox' name='language14' value='JavaScript'>JavaScript　
     <input type='checkbox' name='language15' value='スマホその他'>その他
     <p></p>
+    
     今後の進路　　： <input type='checkbox' name='future1' value='起業'>起業　
     <input type='checkbox' name='future2' value='エンジニア転職'>エンジニア転職　
     <input type='checkbox' name='future3' value='特になし'>特になし　
     <input type='checkbox' name='future4' value='秘密・その他'>秘密・その他
     <p></p>
-    新年会希望日　： <input type='checkbox' name='drinkingDay1' value='1/23'>1/23(土)　
+    
+    飲み会希望日　： <input type='checkbox' name='drinkingDay1' value='1/23'>1/23(土)　
     <input type='checkbox' name='drinkingDay2' value='1/30'>1/30(土)　
     <input type='checkbox' name='drinkingDay3' value='2/6'>2/6(土)　
     <input type='checkbox' name='drinkingDay4' value='2/13'>2/13(土)
     <p></p>
     <span>　　　　　　　　</span>
-    <input type='submit'></input>
+    <input type='submit'>
 </form>
 </body>
 </html>

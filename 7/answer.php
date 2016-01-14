@@ -1,53 +1,53 @@
 
 
 
-<!--
-自分の回答の表示。
-回答を修正したい場合に修正する。
-アンケートページに戻る。
--->
-
 <!DOCTYPE html>
-<html lang="ja">
-    
+<html lang="ja">    
 <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
-    <title>POSTデータ登録</title>
+    <title>似た者探し</title>
+    <h1>あなたと趣向が似ている人</h1>
 </head>
 <body>
 <?php
-    
+    //回答が同じ人の名前を表示する。下に関数を定義。
     session_start();
+    echo '興味のある対象<br>';
     similarityCheck('interest');
-//名前の場合は別の関数使う必要がありそう。
-    
-function similarityCheck($value){
-    $count = count($_SESSION[$value]);
-    $pdo = new PDO('mysql:dbname=gs_db;host=localhost','root','');
-    $stmt = $pdo->query('SET NAMES utf8');
-    for($i = 0; $i<=($count-1); ++$i){
-        $stmt = $pdo->prepare("SELECT name FROM student_info WHERE $value Like '%{$_SESSION[$value][$i]}%'");
-        var_dump($stmt);
-        $flag = $stmt->execute();
+    echo '興味のある言語<br>';
+    similarityCheck('language');
+    echo '今後の進路　　<br>';
+    similarityCheck('future');
+    echo '飲み会希望日　<br>';
+    similarityCheck('drinkingDay');
 
-//データ表示
-    $view="";
-if($flag==false){
-    $view = "SQLエラー";
-}else{
-  //Selectデータの数だけ自動でループしてくれる
-    while( $result = $stmt->fetch(PDO::FETCH_ASSOC)){
-    var_dump($result['name']);
-    //5.表示文字列を作成→変数に追記で代入
-    $view .= '<p>'.$result['name'].'</p>';       
-    var_dump($view);
-  }
-}
-}
-}
+    //DBから回答が同じ人の名前を探して、表示する関数。
+    function similarityCheck($value){
+        $count = count($_SESSION[$value]);
+        $pdo = new PDO('mysql:dbname=gs_db;host=localhost','root','');
+        $stmt = $pdo->query('SET NAMES utf8');
+        
+        //配列の要素の数だけ処理を繰り返す。
+        for($i = 0; $i<=($count-1); ++$i){
+            echo '・「'.$_SESSION[$value][$i].'」：<br>';
+            //DBから回答が同じ人を探す。
+            $stmt = $pdo->prepare("SELECT name FROM student_info WHERE $value Like '%{$_SESSION[$value][$i]}%'");
+            $flag = $stmt->execute();
+            if($flag==false){
+                echo 'SQLエラー';
+            }else{
+            //該当する人の数だけ処理を繰り返す。
+                while( $result = $stmt->fetch(PDO::FETCH_ASSOC)){
+                    //回答が同じ人の名前を表示する。
+                    echo '<span>　　　　　　　</span>'.$result['name'].'<br>';
+                }
+            }
+        }
+        //見栄えのための改行。
+        echo '<br>';
+    }
 ?>
+<a href='index.php'>トップページへ戻る</a>
 </body>
 </html>
 
