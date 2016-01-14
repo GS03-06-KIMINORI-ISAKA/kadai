@@ -10,6 +10,7 @@
 </head>
 <body>
 <h2>ご入力ありがとうございました。</h2>
+<a href='index.php'>トップページへ戻る</a>
 <?php
     session_start();
     $pdo = new PDO('mysql:dbname=gs_db;host=localhost','root','');
@@ -36,7 +37,7 @@
     exit;
     }
 ?>
-<a href='index.php'>トップページへ戻る</a>
+
 </body>
 </html>
 
