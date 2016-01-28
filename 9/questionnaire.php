@@ -10,12 +10,6 @@
 </head>
 <body>
 <form action='answer_confirmation.php' method='get' name='questionnaire'>
-<!--質問が多すぎるので趣味などは省略。質問事項は以下の５つ。
-１．名前
-２．興味のある対象
-３．興味のある言語
-４．今後の進路
--->
     名前：<input type='text' id='nameBox' name='name'><br>
 <?php
     session_start();
@@ -50,7 +44,7 @@
     $futureOb = ['起業', 'エンジニア転職', '特になし', '秘密・その他'];
     arrayToForm($futureOb, 'future', 0);
 
-    //配列からフォームを生成する関数。iが関数を使うごとに1に戻るため、同じidのものが複数出現。引数に$numberを追加する。
+    //配列からフォームを生成する関数。
 function arrayToForm($array, $name, $number){
     $count = count($array);
     for ($i=1;$i<=$count;++$i){

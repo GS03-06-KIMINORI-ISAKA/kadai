@@ -50,7 +50,8 @@ $(document).ready(function(){
     getSelected();
 });
 
-//PENDING：DBから取り出した情報を元に、回答修正ページのチェックボックスにチェックを入れる関数。
+//DBから取り出した情報を元に、回答修正ページのチェックボックスにチェックを入れる関数。
+//pending：phpで関数を作ってJSでは呼び出しのみにする。
 function getSelected(){
     //DBから取り出した情報をPHPから取得する。
     var interestArray = <?php echo json_encode($interestArray, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>;
