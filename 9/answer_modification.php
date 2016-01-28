@@ -45,13 +45,12 @@ function getData($obSearched, $personName, &$obStored){
     }
 ?>
 <script type="text/javascript">
-$(document).ready(function(){
- 
+$(document).ready(function(){ 
     getSelected();
 });
 
 //DBから取り出した情報を元に、回答修正ページのチェックボックスにチェックを入れる関数。
-//pending：phpで関数を作ってJSでは呼び出しのみにする。
+//pending：phpで関数を作ってJSでは呼び出しのみにする。繰り返しの全てでJSを使っており、なかなか分割困難な印象です。
 function getSelected(){
     //DBから取り出した情報をPHPから取得する。
     var interestArray = <?php echo json_encode($interestArray, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>;
