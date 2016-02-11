@@ -44,6 +44,27 @@ $_SESSION['ssid'] = session_id();
     <li><a href="basic%20action/questionnaireCreation.php">アンケート作成</a></li>
     <li><a href="basic%20action/questionnaireInput.php">アンケート回答</a></li>
 </ul>
+<?php
+    //DBからアンケートの情報を取り出して表示。
+    //To do：リンクの貼り付け及びルーティング。
+
+    //questionnaireテーブルからアンケート名と作成者名を呼び出し。
+    $pdo= new PDO('mysql:dbname=temporarySNS;host=localhost','root','');
+    $questionnaireQuery=$pdo->query("SET NAMES utf8");
+    $questionnaireQuery=$pdo->prepare("SELECT questionnaireName, userId FROM questionnaire WHERE userId=1");
+
+    $status = $questionnaireQuery->execute();
+    if($status==false){
+        echo "SQLエラー";
+        exit;
+    }else{
+        while ($result=$questionnaireQuery->fetch(PDO::FETCH_ASSOC)){
+            echo '<table><tr><th>'.$result['questionnaireName'].'</th><th>'.$result['userId'].'</th></tr></table>';
+            echo '<br>';
+        }
+        exit;
+    }
+?>
 <!--
     To do：マイタイムラインへの投稿。
     マイタイムライン投稿：<textarea></textarea>
