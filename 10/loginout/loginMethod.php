@@ -2,11 +2,11 @@
 <!--ログイン処理を実施。loginFormから遷移。-->
 <?php
 session_start();
-include_once('func.php');
+include_once('../func.php');
 
 //DB接続
 try {
-    $pdo = new PDO('mysql:dbname=gs_db;host=localhost', 'root', '');
+    $pdo = new PDO('mysql:dbname=temporarySNS;host=localhost', 'root', '');
 } catch (PDOException $e) {
     exit('DbConnectError:'.$e->getMessage());
 }
@@ -17,10 +17,11 @@ if (!$loginQuery) {
     $error = $pdo->errorInfo();
     exit($error[2]);
 }
+var_dump($loginQuery);
 
-$loginQuery = $pdo->prepare("SELECT * FROM gs_user_table WHERE lid=:lid AND lpw=:lpw");
-$loginQuery->bindValue(':lid', $_POST['usernameForm']);
-$loginQuery->bindValue(':lpw', $_POST['passwordForm']);
+$loginQuery = $pdo->prepare("SELECT * FROM user WHERE firstName=:userName AND password=:password");
+$loginQuery->bindValue(':userName', $_POST['usernameForm']);
+$loginQuery->bindValue(':password', $_POST['passwordForm']);
 
 
 //クエリを実行し、データを取得
@@ -33,15 +34,15 @@ if($res==false){
 $val = $loginQuery->fetch(); //1レコードだけ取得する方法
 
 //sessionに値を導入
-if( $val["id"] != "" ){
-    loginSessionSet($val, 'ssid', 'name', 'kanri_flg');
-    if( $_SESSION['kanri_flg']=1){
-        //To do：ルーティング
-        header("Location: managerPage.php");
-    }
-    else if( $_SESSION['kanri_flg']=0){
-        //To do：ルーティング
-        header("Location: userPage.php"); 
+if( $val['userId'] != '' ){
+    loginSessionSet($val, 'ssid', 'userName', 'permission');
+    if( $_SESSION['permission']){
+//        //To do：ルーティング
+//        header("Location: ../managerPage.php");
+//    }
+//    else if( $_SESSION['kanri_flg']=0){
+//        //To do：ルーティング
+        header("Location: ../userPage.php"); 
     }
 }else{
     //値がない場合はlogout処理を経由して前画面へ
